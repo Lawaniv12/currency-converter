@@ -1,0 +1,48 @@
+<div class="w-full">
+  <div class="nice-bg flex items-end">
+    <div class="mx-auto w-[80%] bg-white drop-shadow-md rounded-lg -mb-20 p-10">
+      <div class="">
+        <form action="" [formGroup]="currencyChanger" (ngSubmit)="changeCurrency()" class=" justify-items-center content-center flex flex-wrap md:max-w-[100%]  p-4 space-x-2">
+          
+          
+            <div class="md:w-[28%]">
+              <label for="" class="font-bold block mb-2 text-sm text-gray-900">Amount</label>
+              <input type="number"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-black-400 focus:ring-blue-500" placeholder="Please Enter Amount" required formControlName="amount">
+            </div>
+
+            <div class="md:w-[30%]">
+              <label for="" class="font-bold block mb-2 text-sm text-gray-900">From</label>
+              <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-black-400 focus:ring-blue-500" required
+                formControlName="base">
+                <option value="{{item.key}}" *ngFor="let item of all_currencies | keyvalue">{{item.value}}</option>
+              </select>
+            </div>
+            <div class="cursor-pointer border px-4 pt-4 rounded-full items-center mt-4 w-[8%]">
+              <div class="w-14 h-14 justify-center items-center">
+                <img src="assets/exchange.png" alt="The exchange Image" class="">
+              </div>
+              
+            </div>
+           
+            <div class="md:w-[30%]">
+              <label for="" class="font-bold block mb-2 text-sm text-gray-900">To</label>
+              <select class= "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 placeholder-black-400 focus:ring-blue-500" required
+                formControlName="quote">
+                <option value="0" selected>NGN </option>
+                <option value="{{item.key}}" *ngFor="let item of all_currencies | keyvalue">{{item.value}}</option>
+              </select>
+            </div>
+             <div id="rate" class="text-xl font-bold border-gray-300 py-4 px-10  absolute -mt-8 ml-60 rounded bg-inherit"> <div *ngIf="show"> 1  {{base | uppercase}} = {{rate}} {{quote |uppercase}}</div> </div>
+            <div class="flex justify-end mt-8">
+              <button class="bg-blue py-2 px-10 bg-sky-600 hover:bg-sky-900 rounded text-white mx-auto "> Convert
+              </button>
+            </div>
+      
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

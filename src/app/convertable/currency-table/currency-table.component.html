@@ -1,0 +1,47 @@
+<div class="mt-32">
+  <div>
+    <h1 class="text-xl mb-2 text-center font-bold">
+      Currency Converter
+    </h1>
+  </div>
+  <div class="p-5 h-screen bg-gray-100">
+
+    <div class="overflow-auto rounded-lg">
+      <table class="w-full">
+        <thead class="bg-gray-50 border-b-2 border-gray-200">
+          <tr>
+            <th class="w-15 p-3 text-sm font-semibold tracking-wide text-left">No</th>
+            <th class="2-15 p-3 text-sm font-semibold tracking-wide text-left">Currency Code</th>
+            <th class="w-24 p-3 text-sm font-semibold tracking-wide text-left">Currency</th>
+            <th class="w-30 p-3 text-sm font-semibold tracking-wide text-left">EUR Exchange Rate</th>
+            <th class="w-30 p-3 text-sm font-semibold tracking-wide text-left">BTC Exchange Rate</th>
+            <th class="p-3 text-sm font-semibold tracking-wide text-left">Flag</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <!-- <tr class="bg-white" *ngFor="let item of countries | keyvalue"> -->
+          <tr class="bg-white" *ngFor="let item of finalArr | paginate: {itemsPerPage: 10, currentPage: pg, totalItems:totalLength}; index as i">
+            <td class="p-3 text-sm text-gray-700  whitespace-nowrap"><a class="font-bold text-blue-500" href="#">{{i + 1}}</a>
+            </td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{item.symbol | uppercase}}</td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{item.fullName}}</td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap">EUR Exchange Rate</td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{item.btcPrice}}</td>
+           
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
+              <img [src]="item.flag" class="w-[30px]" alt="">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="flex justify-between py-4 px-6 mt-3 items-center">
+        <div class="text-grey-body">Showing 10 out of {{finalArr.length}} entries</div>
+      
+        <div class="pagination flex justify-end ">
+          <pagination-controls (pageChange)="pg=$event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
